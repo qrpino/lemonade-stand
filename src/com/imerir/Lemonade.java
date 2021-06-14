@@ -4,10 +4,10 @@ public class Lemonade {
 
     private int numLemonade= 0;
     private int numAds = 0;
-    private int costLemonage = 0;
+    private double costLemonage = 0;
 
     /* fonction principale permetant de crée les lemonade  */
-    public Lemonade(int numLemonade, int numAds, int costLemonage) {
+    public Lemonade(int numLemonade, int numAds, double costLemonage) {
         this.numLemonade = numLemonade;
         this.numAds = numAds;
         this.costLemonage= costLemonage;
@@ -24,7 +24,7 @@ public class Lemonade {
     }
 
     /* fonction permetant de retournée le prix d'une lemonade */
-    public int getCostLemonage() {
+    public double getCostLemonage() {
         return costLemonage;
     }
 }

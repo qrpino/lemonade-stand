@@ -11,7 +11,7 @@ public class Day {
 
     /* fonction permetant de crée le premier jour */
     public Day() {
-        date = 0;
+        date = 1;
         randWeather();
         System.out.println("Day : " + date + ", Weather : " + weather);
     }
@@ -22,6 +22,10 @@ public class Day {
         randWeather();
         System.out.println("Day : " + date + ", Weather : " + weather);
 
+    }
+
+    public int getDate() {
+        return date;
     }
 
     /* fonction permetant de retournée la météo */

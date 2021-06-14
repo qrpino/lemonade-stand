@@ -2,14 +2,18 @@ package com.imerir;
 
 public class Money {
 
+    private int date;
     private double money = 0;
     private double adsCost = 0.15;
-    private double limonadeCost = 0.02;
+    private double limonadeCost = 0.02 * date;
 
     /* fonction principale */
     public Money(double money) {
         this.money = money;
+    }
 
+    public void setDate(int date) {
+        this.date = date;
     }
 
     /* fonction permetant de payée les annonces */

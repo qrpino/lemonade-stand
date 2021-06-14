@@ -54,7 +54,7 @@ public class Main {
         int numAds = scanner.nextInt();
 
         System.out.println("How many wanted to sell a penny lemonade ?");
-        int costLemonade = scanner.nextInt();
+        double costLemonade = scanner.nextDouble();
 
         lemonade = new Lemonade(numLemonade, numAds, costLemonade);
         client.createClient(day.getWeather(), lemonade);
@@ -63,8 +63,6 @@ public class Main {
 
     /* fonction d'affichage du recapitulatif */
     public void Bilan() {
-        Scanner scanner = new Scanner(System.in);
-
         money.payAds(lemonade.getNumAds());
         money.payLemonade(lemonade.getNumLemonade());
         money.winMoney(client.getNbClient() * lemonade.getCostLemonage());
@@ -91,6 +89,7 @@ public class Main {
         while(!(next.toString().equalsIgnoreCase("STOP"))) {
             if (next.toString().equalsIgnoreCase("YES")) {
                 day.nextDay();
+                money.setDate(day.getDate());
                 next = null;
                 Questions();
 
