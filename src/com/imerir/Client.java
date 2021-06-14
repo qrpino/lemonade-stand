@@ -20,9 +20,6 @@ public class Client {
         if (ratioClient > lemonade.getNumAds()) {
             ratioReel = lemonade.getNumAds() / ratioClient;
             nbClient *= ratioReel;
-            if(nbClient > lemonade.getNumLemonade()) {
-                nbClient = lemonade.getNumLemonade();
-            }
         }
     }
 
