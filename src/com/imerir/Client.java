@@ -24,7 +24,6 @@ public class Client {
 
         if(nbClient > lemonade.getNumLemonade()) {
             nbClient = lemonade.getNumLemonade();
-            }
         }
     }
 
