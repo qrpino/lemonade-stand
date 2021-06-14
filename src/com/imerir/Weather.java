@@ -4,14 +4,19 @@ public enum Weather {
 
     HOT(40, 90), SUNNY(25, 60), CLOUDY(5, 20);
 
-    private int [] pourcentage;
+    private int pourcentageMin;
+    private int pourcentageMax;
 
     private Weather(int min, int max) {
-        int [] pourcentage = {min, max};
+        this.pourcentageMin = min;
+        this.pourcentageMax = max;
     }
 
-    public int[] getPourcentage() {
-        return pourcentage;
+    public int getPourcentageMin() {
+        return this.pourcentageMin;
+    }
 
+    public int getPourcentageMax() {
+        return this.pourcentageMax;
     }
 }
