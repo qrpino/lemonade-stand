@@ -21,6 +21,11 @@ public class Client {
             ratioReel = lemonade.getNumAds() / ratioClient;
             nbClient *= ratioReel;
         }
+
+        if(nbClient > lemonade.getNumLemonade()) {
+            nbClient = lemonade.getNumLemonade();
+            }
+        }
     }
 
     public int getNbClient() {
