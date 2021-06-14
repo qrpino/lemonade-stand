@@ -9,32 +9,37 @@ public class Main {
     private Money money;
 
 
-
+    /* main debut programme java */
     public static void main(String[] args) {
 
         new Main().start();
 
     }
 
+    /* lancement du jeux */
     void start() {
         StartOrNo();
     }
 
+    /* debut  de la partie */
     public void StartOrNo() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("START ? (YES OR NO)");
+        System.out.println("START ? (YES OR STOP)");
 
         String next = scanner.nextLine();
-
-        if (next.toString().equalsIgnoreCase("YES")) {
-            day = new Day();
-            money = new Money(2);
-            Questions();
-            Game();
-        }
+        while(!(next.toString().equalsIgnoreCase("STOP"))) {
+            if (next.toString().equalsIgnoreCase("YES")) {
+                day = new Day();
+                money = new Money(2);
+                Questions();
+                Game();
+            }
+        } System.exit(-1);
     }
 
+
+    /* fonction créeation de lemonade */
     public void Questions() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("You currently have " + this.money.getMoney() + " amount of money.");
@@ -52,6 +57,7 @@ public class Main {
         Bilan();
     }
 
+    /* fonction d'affichage du recapitulatif */
     public void Bilan() {
         Scanner scanner = new Scanner(System.in);
 
@@ -72,10 +78,11 @@ public class Main {
         }
     }
 
+    /* fonction pricipale du jeu */
     public void Game() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("NEXT DAY ? (YES OR NO)");
+        System.out.println("NEXT DAY ? (YES OR STOP)");
 
         String next = scanner.nextLine();
         while(!(next.toString().equalsIgnoreCase("STOP"))) {
