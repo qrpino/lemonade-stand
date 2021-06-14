@@ -15,15 +15,22 @@ public class Client {
         double randNum = weather.getPourcentageMin() + (weather.getPourcentageMax() - weather.getPourcentageMin()) * random.nextDouble();
         Double client = new Double(randNum * 40);
 
+        System.out.println(client);
+
         nbClient = client.intValue();
         ratioClient = nbClient / 5;
         if (ratioClient > lemonade.getNumAds()) {
             ratioReel = lemonade.getNumAds() / ratioClient;
             nbClient *= ratioReel;
+            System.out.println("a" + nbClient);
         }
+
+        System.out.println(nbClient);
 
         if(nbClient > lemonade.getNumLemonade()) {
             nbClient = lemonade.getNumLemonade();
+            System.out.println("b" + nbClient);
+
         }
     }
 

@@ -27,16 +27,17 @@ public class Main {
     public void StartOrNo() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("START ? (YES OR NO)");
+        System.out.println("START ? (YES OR STOP)");
 
         String next = scanner.nextLine();
-
-        if (next.toString().equalsIgnoreCase("YES")) {
-            day = new Day();
-            money = new Money(2);
-            Questions();
-            Game();
-        }
+        while(!(next.toString().equalsIgnoreCase("STOP"))) {
+            if (next.toString().equalsIgnoreCase("YES")) {
+                day = new Day();
+                money = new Money(2);
+                Questions();
+                Game();
+            }
+        } System.exit(-1);
     }
 
     public void Questions() {
@@ -78,7 +79,7 @@ public class Main {
     public void Game() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("NEXT DAY ? (YES OR NO)");
+        System.out.println("NEXT DAY ? (YES OR STOP)");
 
         String next = scanner.nextLine();
         while(!(next.toString().equalsIgnoreCase("STOP"))) {
