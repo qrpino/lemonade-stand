@@ -8,6 +8,7 @@ public class Main {
 
     private Day day;
     private Lemonade lemonade;
+    private Money money;
 
 
 
@@ -30,6 +31,7 @@ public class Main {
 
         if (next.toString().equalsIgnoreCase("YES")) {
             day = new Day();
+            money = new Money(2);
             Questions();
             Game();
         }
@@ -53,10 +55,15 @@ public class Main {
     public void Bilan() {
         Scanner scanner = new Scanner(System.in);
 
+        money.payAds(lemonade.getNumAds());
+        money.payLemonade(lemonade.getNumLemonade());
+
         System.out.println("Number of lemonade sold : " + lemonade.getNumLemonade());
         System.out.println("Number of Ads Create : " + lemonade.getNumAds());
         System.out.println("Cost of lemonade : " + lemonade.getCostLemonage());
         //TODO
+        System.out.println("Limonade SOlD : " );
+        System.out.println("Money win : " + money.getMoney());
 
         System.out.println("Continue (YES)");
         String nextday = scanner.nextLine();
@@ -79,6 +86,5 @@ public class Main {
 
             }
         }
-
     }
 }
