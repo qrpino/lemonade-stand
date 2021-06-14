@@ -9,10 +9,6 @@ public class Day {
     private Weather weather;
     private int date;
 
-    public enum Weather {
-        HOT, SUNNY, CLOUDY
-    }
-
     public Day() {
         date = 0;
         randWeather();
