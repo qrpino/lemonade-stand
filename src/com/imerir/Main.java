@@ -13,17 +13,19 @@ public class Main {
 
 
 
-
+    /* main debut programme java */
     public static void main(String[] args) {
 
         new Main().start();
 
     }
 
+    /* lancement du jeux */
     void start() {
         StartOrNo();
     }
 
+    /* debut  de la partie */
     public void StartOrNo() {
         Scanner scanner = new Scanner(System.in);
 
@@ -40,6 +42,8 @@ public class Main {
         } System.exit(-1);
     }
 
+
+    /* fonction créeation de lemonade */
     public void Questions() {
         Scanner scanner = new Scanner(System.in);
 
@@ -57,6 +61,7 @@ public class Main {
         Bilan();
     }
 
+    /* fonction d'affichage du recapitulatif */
     public void Bilan() {
         Scanner scanner = new Scanner(System.in);
 
@@ -76,6 +81,7 @@ public class Main {
         Game();
     }
 
+    /* fonction pricipale du jeu */
     public void Game() {
         Scanner scanner = new Scanner(System.in);
 

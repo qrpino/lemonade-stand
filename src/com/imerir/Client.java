@@ -9,6 +9,7 @@ public class Client {
     private float ratioClient;
     private float ratioReel;
 
+    /* fonction principale , creation d'un nb de client selon les contraintes */
     public void createClient(Weather weather, Lemonade lemonade) {
 
         Random random = new Random();
@@ -34,6 +35,7 @@ public class Client {
         }
     }
 
+    /* fonction permetant de retournée le nb de client */
     public int getNbClient() {
         return nbClient;
     }
