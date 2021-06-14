@@ -90,6 +90,6 @@ public class Main {
             } else {
                 Game();
             }
-        } System.exit();
+        } System.exit(-1);
     }
 }
