@@ -7,7 +7,6 @@ public class Day {
     private int minRand = 1;
     private int maxRand = 10;
     private Weather weather;
-    private Client client = new Client();
     private int date;
 
     public Day() {
@@ -19,9 +18,12 @@ public class Day {
     public Day(int date) {
         this.date = date;
         randWeather();
-        client.createClient(weather);
         System.out.println("Day : " + date + ", Weather : " + weather);
 
+    }
+
+    public Weather getWeather() {
+        return weather;
     }
 
     public void nextDay() {
