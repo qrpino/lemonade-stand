@@ -4,12 +4,12 @@ public class Lemonade {
 
     private int numLemonade= 0;
     private int numAds = 0;
-    private int lemonadeCost = 0;
+    private int costLemonage = 0;
 
-    public Lemonade(int numLemonade, int numAds, int lemonadeCost) {
+    public Lemonade(int numLemonade, int numAds, int costLemonage) {
         this.numLemonade = numLemonade;
         this.numAds = numAds;
-        this.lemonadeCost = lemonadeCost;
+        this.costLemonage= costLemonage;
     }
 
     public int getNumLemonade() {
@@ -20,7 +20,7 @@ public class Lemonade {
         return numAds;
     }
 
-    public int getLemonadeCost() {
-        return lemonadeCost;
+    public int getCostLemonage() {
+        return costLemonage;
     }
 }
