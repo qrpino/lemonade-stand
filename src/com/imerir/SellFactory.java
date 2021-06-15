@@ -81,7 +81,7 @@ public class SellFactory {
         }
         // Process the sell factor with the purchased ads
         if(this.sellFactor * (1 + (this.adPrice * this.adsQuantity)) < 1){
-            this.sellFactor = this.adPrice * this.adsQuantity;
+            this.sellFactor *= (1 +(this.adPrice * this.adsQuantity));
         }
         else
         {
@@ -94,21 +94,19 @@ public class SellFactory {
         // Substract production cost
         double productionCost = lemonadeProductionCost * this.lemonadeQuantity;
         this.currentPlayer.setMoney(-productionCost);
-        System.out.println("LEMONADE PRODUCTION :" + productionCost);
+        System.out.println("LEMONADE PRODUCTION : " + productionCost);
         // Substract ads cost
         double adsCost = this.adsQuantity * this.adPrice;
         this.currentPlayer.setMoney(-adsCost);
-        System.out.println("ADS PRODUCTION :" + adsCost);
+        System.out.println("ADS PRODUCTION : " + adsCost);
         // Number of lemonades sold
         this.lemonadesSold = (int)(this.lemonadeQuantity * (this.sellFactor));
-        System.out.println("LEMONADES SOLD :" + this.lemonadesSold);
+        System.out.println("LEMONADES SOLD : " + this.lemonadesSold);
         // Add lemonades sales profit to player's money
         this.currentPlayer.setMoney(this.lemonadesSold * this.lemonadePrice);
         double trueBenefits = ((this.lemonadesSold * this.lemonadePrice) - adsCost - productionCost);
         System.out.println("TRUE BENEFITS : " + trueBenefits);
-        System.out.println("ACTUAL MONEY :" + this.currentPlayer.getMoney());
-
-
+        System.out.println("ACTUAL MONEY : " + this.currentPlayer.getMoney());
     }
 
 }

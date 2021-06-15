@@ -33,6 +33,7 @@ public class Game {
         this.currentDay = new Day(this.dayId);
         this.dayId += 1;
         System.out.println(currentDay.toString());
+        // If we have enough money, we can continue
         if(!this.isGameOver())
         {
             Scanner scanner = new Scanner(System.in);
