@@ -156,7 +156,7 @@ public class GameWindow extends JFrame implements ChangeListener {
         dialog.setVisible(true);
 
         setTitle("Lemonade Stand Day: " + game.dayId);
-        labelMoney.setText("Money : " + String.valueOf(game.getCurrentPlayer().getMoney()));
+        labelMoney.setText("Money : " + String.valueOf(game.getCurrentPlayer().getMoney()) + " €");
 
     }
 
