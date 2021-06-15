@@ -10,9 +10,10 @@ import java.net.URL;
 public class MainWindow extends JFrame {
 
     JButton b = new JButton(new ImageIcon(getClass().getResource("/start.png")));
+    Game game;
 
-
-    MainWindow() {
+    MainWindow(Game game) {
+        this.game = game;
         // mise en place de la fenêtre
         setTitle("Lemonade Stand");
         setBounds(10, 10, 600, 400);
@@ -26,6 +27,8 @@ public class MainWindow extends JFrame {
     }
 
     void startGame(ActionEvent event){
+        new GameWindow(this, game);
+        this.setVisible(false);
 
     }
 }

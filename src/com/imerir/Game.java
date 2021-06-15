@@ -3,6 +3,11 @@ package com.imerir;
 import java.util.Scanner;
 
 public class Game {
+    //* Lemonade const prices that defines what price is high and which is low
+    final double highPrice = 1;
+    final double mediumPrice = 0.4;
+    final double lowPrice = 0.2;
+
     private Day currentDay;
     int dayId = 1;
     private SellFactory sellFactory;
@@ -14,56 +19,44 @@ public class Game {
         String next = scanner.nextLine();
         while(!next.toString().equalsIgnoreCase("NO")){
             if(next.toString().equalsIgnoreCase("YES")){
-                    this.questions();
+            questions();
             }
         }
         System.exit(-1);
     }
 
-    // Check if we still can produce one lemonade
-    public boolean isGameOver(){
-        if(this.currentPlayer.getMoney() < this.currentDay.getLemonadeProductionCost())
-        {
-            return true;
-        }
-        return false;
+    public SellFactory getSellFactory() {
+        return sellFactory;
+    }
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
     public void questions(){
         this.currentDay = new Day(this.dayId);
         this.dayId += 1;
         System.out.println(currentDay.toString());
-        // If we have enough money, we can continue
-        if(!this.isGameOver())
-        {
-            Scanner scanner = new Scanner(System.in);
 
-            System.out.println("HOW MANY LEMONADE DO YOU WANT TO PRODUCE ?");
-            int nbLemonade = scanner.nextInt();
-            while(nbLemonade * this.currentDay.getLemonadeProductionCost() > this.currentPlayer.getMoney())
-            {
-                System.out.println("NOT ENOUGH MONEY");
-                System.out.println("HOW MANY LEMONADE DO YOU WANT TO PRODUCE ?");
-                nbLemonade = scanner.nextInt();
-            }
+        Scanner scanner = new Scanner(System.in);
 
-            System.out.println("HOW MANY ADS DO YOU WANT TO MAKE ?");
-            int nbAds = scanner.nextInt();
-            while(nbAds * 0.15 > this.currentPlayer.getMoney() - (nbLemonade * this.currentDay.getLemonadeProductionCost())){
-                System.out.println("NOT ENOUGH MONEY");
-                System.out.println("HOW MANY ADS DO YOU WANT TO MAKE ?");
-                nbAds = scanner.nextInt();
-            }
+        System.out.println("HOW MANY LEMONADE DO YOU WANT TO PRODUCE ?");
+        int nbLemonade = scanner.nextInt();
 
-            System.out.println("HOW MUCH DO YOU SELL LEMONADE ?");
-            double lemonadeSellPrice = scanner.nextDouble();
+        System.out.println("HOW MANY ADS DO YOU WANT TO MAKE ?");
+        int nbAds = scanner.nextInt();
 
-            sellFactory = new SellFactory(nbLemonade, nbAds, lemonadeSellPrice, currentDay.getWeather(), this.currentPlayer);
-            sellFactory.factory(currentDay.getLemonadeProductionCost());
-        }
-        else{
-            System.out.println("GAME OVER");
-            System.exit(-1);
-        }
+        System.out.println("HOW MUCH DO YOU SELL LEMONADE ?");
+        double lemonadeSellPrice = scanner.nextDouble();
+
+        sellFactory = new SellFactory(nbLemonade, nbAds, lemonadeSellPrice, currentDay.getWeather(), this.currentPlayer);
+        sellFactory.factory(currentDay.getLemonadeProductionCost());
+    }
+
+    public void questionGui(int nbLemonade, int nbAds, double lemonadeSellPrice) {
+        this.currentDay = new Day(this.dayId);
+        this.dayId += 1;
+
+        sellFactory = new SellFactory(nbLemonade, nbAds, lemonadeSellPrice, currentDay.getWeather(), this.currentPlayer);
+        sellFactory.factory(currentDay.getLemonadeProductionCost());
     }
 }

@@ -1,14 +1,14 @@
 package com.imerir;
 
 public class Player {
-    private double money;
+    private int money;
     public Player(int money){
         this.money = money;
     }
     public void setMoney(double money){
         this.money += money;
     }
-    public double getMoney() {
+    public int getMoney() {
         return money;
     }
 }

@@ -1,7 +1,7 @@
 package com.imerir;
 
 public class SellFactory {
-    // What is a high or low price to sell lemonade
+    // What is a high or low price
     final public double highestPrice = 1;
     final public double mediumPrice = 0.4;
     final public double lowestPrice = 0.1;
@@ -32,6 +32,12 @@ public class SellFactory {
     double sellFactor;
     int lemonadesSold;
     Player currentPlayer;
+
+    double lemonadeProduction;
+    double adsProduction;
+
+    double trueBenef;
+    double actualMoney;
 
     public SellFactory(int lemonadeQuantity, int adsQuantity, double lemonadePrice, Weather weather, Player player){
         this.lemonadeQuantity = lemonadeQuantity;
@@ -79,9 +85,9 @@ public class SellFactory {
             default:
                 break;
         }
-        // Process the sell factor with the purchased ads
+
         if(this.sellFactor * (1 + (this.adPrice * this.adsQuantity)) < 1){
-            this.sellFactor *= (1 +(this.adPrice * this.adsQuantity));
+            this.sellFactor = this.adPrice * this.adsQuantity;
         }
         else
         {
@@ -92,21 +98,41 @@ public class SellFactory {
     // Processes money and output values
     public void factory(double lemonadeProductionCost){
         // Substract production cost
-        double productionCost = lemonadeProductionCost * this.lemonadeQuantity;
-        this.currentPlayer.setMoney(-productionCost);
-        System.out.println("LEMONADE PRODUCTION : " + productionCost);
+        this.currentPlayer.setMoney(-(lemonadeProductionCost * this.lemonadeQuantity));
+        System.out.println("LEMONADE PRODUCTION :" + -(lemonadeProductionCost * this.lemonadeQuantity));
+        lemonadeProduction = -(lemonadeProductionCost * this.lemonadeQuantity);
         // Substract ads cost
-        double adsCost = this.adsQuantity * this.adPrice;
-        this.currentPlayer.setMoney(-adsCost);
-        System.out.println("ADS PRODUCTION : " + adsCost);
+        this.currentPlayer.setMoney(-(this.adsQuantity * this.adPrice));
+        System.out.println("ADS PRODUCTION :" + -(this.adsQuantity * this.adPrice));
+        adsProduction = -(this.adsQuantity * this.adPrice);
         // Number of lemonades sold
         this.lemonadesSold = (int)(this.lemonadeQuantity * (this.sellFactor));
-        System.out.println("LEMONADES SOLD : " + this.lemonadesSold);
-        // Add lemonades sales profit to player's money
+        System.out.println("LEMONADES SOLD :" + (int)(this.sellFactor * this.lemonadeQuantity));
+        // Add lemonades sales from lemonade
         this.currentPlayer.setMoney(this.lemonadesSold * this.lemonadePrice);
-        double trueBenefits = ((this.lemonadesSold * this.lemonadePrice) - adsCost - productionCost);
+        System.out.println();
+        double trueBenefits = (this.lemonadesSold * this.lemonadePrice) - (lemonadeProductionCost * this.lemonadeQuantity)
+                - (this.adsQuantity * this.adPrice);
+        trueBenef = trueBenefits;
+        actualMoney = this.currentPlayer.getMoney();
         System.out.println("TRUE BENEFITS : " + trueBenefits);
-        System.out.println("ACTUAL MONEY : " + this.currentPlayer.getMoney());
+        System.out.println("ACTUAL MONEY :" + this.currentPlayer.getMoney());
+
     }
 
+    public double getLemonadeProduction() {
+        return lemonadeProduction;
+    }
+
+    public double getAdsProduction() {
+        return adsProduction;
+    }
+
+    public double getTrueBenef() {
+        return trueBenef;
+    }
+
+    public double getActualMoney() {
+        return actualMoney;
+    }
 }
