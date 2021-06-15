@@ -4,14 +4,14 @@ import java.util.Random;
 
 public class Day {
 
-    private int minRand = 1;
-    private int maxRand = 10;
+    private int minRand = 0;
+    private int maxRand = 13;
     private Weather weather;
     private int date;
 
     /* fonction permetant de crée le premier jour */
     public Day() {
-        date = 0;
+        date = 1;
         randWeather();
         System.out.println("Day : " + date + ", Weather : " + weather);
     }
@@ -22,6 +22,10 @@ public class Day {
         randWeather();
         System.out.println("Day : " + date + ", Weather : " + weather);
 
+    }
+
+    public int getDate() {
+        return date;
     }
 
     /* fonction permetant de retournée la météo */
@@ -40,11 +44,13 @@ public class Day {
         Random random = new Random();
         int randNum = random.nextInt(maxRand - minRand) + minRand;
 
-        if(randNum <= 4 && randNum >= 1) {
+        if (randNum <= 2 && randNum >= 0) {
+            weather = Weather.RAIN;
+        }else if (randNum <= 5 && randNum >= 3){
             weather = Weather.CLOUDY;
-        } else if (randNum <= 7 && randNum >= 5){
+        } else if (randNum <= 10 && randNum >= 6){
             weather = Weather.SUNNY;
-        } else if (randNum <= 11 && randNum >= 8) {
+        } else if (randNum <= 14 && randNum >= 11) {
             weather = Weather.HOT;
         }
     }

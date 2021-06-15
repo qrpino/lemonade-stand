@@ -2,7 +2,7 @@ package com.imerir;
 
 public enum Weather {
 
-    HOT(0.60, 0.90), SUNNY(0.30, 0.60), CLOUDY(0.05, 0.20);
+    HOT(0.60, 0.90), SUNNY(0.30, 0.60), CLOUDY(0.15, 0.40), RAIN(0.02, 0.15);
 
     private double pourcentageMin;
     private double pourcentageMax;
