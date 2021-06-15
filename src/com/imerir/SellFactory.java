@@ -36,7 +36,7 @@ public class SellFactory {
     double lemonadeProduction;
     double adsProduction;
 
-    double trueBenef;
+    double trueBenefits;
     double actualMoney;
 
     public SellFactory(int lemonadeQuantity, int adsQuantity, double lemonadePrice, Weather weather, Player player){
@@ -111,11 +111,10 @@ public class SellFactory {
         // Add lemonades sales from lemonade
         this.currentPlayer.setMoney(this.lemonadesSold * this.lemonadePrice);
         System.out.println();
-        double trueBenefits = (this.lemonadesSold * this.lemonadePrice) - (lemonadeProductionCost * this.lemonadeQuantity)
+        trueBenefits = (this.lemonadesSold * this.lemonadePrice) - (lemonadeProductionCost * this.lemonadeQuantity)
                 - (this.adsQuantity * this.adPrice);
-        trueBenef = trueBenefits;
         actualMoney = this.currentPlayer.getMoney();
-        System.out.println("TRUE BENEFITS : " + trueBenefits);
+        System.out.println("TRUE BENEFITS : " + this.trueBenefits);
         System.out.println("ACTUAL MONEY :" + this.currentPlayer.getMoney());
 
     }
@@ -128,9 +127,11 @@ public class SellFactory {
         return adsProduction;
     }
 
-    public double getTrueBenef() {
-        return trueBenef;
+    public double getTrueBenefits() {
+        return this.trueBenefits;
     }
+
+    public int getLemonadesSold() {return this.lemonadesSold;};
 
     public double getActualMoney() {
         return actualMoney;

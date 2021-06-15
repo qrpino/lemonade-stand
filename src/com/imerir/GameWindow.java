@@ -15,7 +15,7 @@ public class GameWindow extends JFrame implements ChangeListener {
 
     JLabel labelNbLemonade, labelNbAds, labelLemonadeSellPrice, labelMoney;
 
-    JLabel labelActualMoney, labelAdsProduction, labelTrueBenef, labelLemonageProduction;
+    JLabel labelActualMoney, labelAdsProduction, labelTrueBenefits, labelLemonadeProduction, labelLemonadesSold;
 
     JButton next = new JButton(new ImageIcon(getClass().getResource("/next.png")));
 
@@ -123,21 +123,26 @@ public class GameWindow extends JFrame implements ChangeListener {
         FlowLayout experimentLayout = new FlowLayout();
         dialog.setLayout(experimentLayout);
 
-        labelActualMoney = new JLabel();
-        labelActualMoney.setText("ACTUAL MONEY : " + String.valueOf(game.getSellFactory().getActualMoney()));
-        dialog.add(labelActualMoney);
+        labelLemonadeProduction = new JLabel();
+        labelLemonadeProduction.setText("LEMONADE PRODUCTION : " + String.valueOf(game.getSellFactory().getLemonadeProduction()));
+        dialog.add(labelLemonadeProduction);
 
         labelAdsProduction = new JLabel();
         labelAdsProduction.setText("ADS PRODUCTION : " + String.valueOf(game.getSellFactory().getAdsProduction()));
         dialog.add(labelAdsProduction);
 
-        labelTrueBenef = new JLabel();
-        labelTrueBenef.setText("TRUE BENEFITS : " + String.valueOf(game.getSellFactory().getTrueBenef()));
-        dialog.add(labelTrueBenef);
+        labelLemonadesSold = new JLabel();
+        labelLemonadesSold.setText("LEMONADES SOLD : " + String.valueOf(game.getSellFactory().getLemonadesSold()));
+        dialog.add(labelLemonadesSold);
 
-        labelLemonageProduction = new JLabel();
-        labelLemonageProduction.setText("LEMONADE SOLD : " + String.valueOf(game.getSellFactory().getLemonadeProduction()));
-        dialog.add(labelLemonageProduction);
+        labelTrueBenefits = new JLabel();
+        labelTrueBenefits.setText("TRUE BENEFITS : " + String.valueOf(game.getSellFactory().getTrueBenefits()));
+        dialog.add(labelTrueBenefits);
+
+        labelActualMoney = new JLabel();
+        labelActualMoney.setText("ACTUAL MONEY : " + String.valueOf(game.getSellFactory().getActualMoney()));
+        dialog.add(labelActualMoney);
+
 
         dialog.setVisible(true);
         setTitle("Lemonade Stand Day: " + game.dayId);
@@ -147,7 +152,7 @@ public class GameWindow extends JFrame implements ChangeListener {
 
     @Override
     public void stateChanged(ChangeEvent e) {
-        labelNbLemonade.setText("Number of Lemonage : " + String.valueOf(sliderNbLemonade.getValue()));
+        labelNbLemonade.setText("Number of Lemonade : " + String.valueOf(sliderNbLemonade.getValue()));
         labelNbAds.setText("Number of Ads : " + String.valueOf(sliderNbAds.getValue()));
         labelLemonadeSellPrice.setText("Price of Lemonade : " + String.valueOf(sliderLemonadeSellPrice.getValue()));
     }
