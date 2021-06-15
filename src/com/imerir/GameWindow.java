@@ -52,27 +52,27 @@ public class GameWindow extends JFrame implements ChangeListener {
 
         labelNbAds = new JLabel();
 
-        sliderNbAds = new JSlider(0, 50, 2);
+        sliderNbAds = new JSlider(0, 30, 2);
 
         sliderNbAds.setPaintTrack(true);
         sliderNbAds.setPaintTicks(true);
         sliderNbAds.setPaintLabels(true);
 
         sliderNbAds.setMajorTickSpacing(10);
-        sliderNbAds.setMinorTickSpacing(1);
+        sliderNbAds.setMinorTickSpacing(2);
 
         sliderNbAds.addChangeListener(this);
 
         labelLemonadeSellPrice = new JLabel();
 
-        sliderLemonadeSellPrice = new JSlider(0, 15, 1);
+        sliderLemonadeSellPrice = new JSlider(0, 100, 1);
 
         sliderLemonadeSellPrice.setPaintTrack(true);
         sliderLemonadeSellPrice.setPaintTicks(true);
         sliderLemonadeSellPrice.setPaintLabels(true);
 
-        sliderLemonadeSellPrice.setMajorTickSpacing(5);
-        sliderLemonadeSellPrice.setMinorTickSpacing(1);
+        sliderLemonadeSellPrice.setMajorTickSpacing(15);
+        sliderLemonadeSellPrice.setMinorTickSpacing(5);
 
         sliderLemonadeSellPrice.addChangeListener(this);
 
