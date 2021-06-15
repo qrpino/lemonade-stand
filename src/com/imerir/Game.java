@@ -3,11 +3,6 @@ package com.imerir;
 import java.util.Scanner;
 
 public class Game {
-    //* Lemonade const prices that defines what price is high and which is low
-    final double highPrice = 1;
-    final double mediumPrice = 0.4;
-    final double lowPrice = 0.2;
-
     private Day currentDay;
     int dayId = 1;
     private SellFactory sellFactory;

@@ -1,7 +1,7 @@
 package com.imerir;
 
 public class SellFactory {
-    // What is a high or low price
+    // What is a high or low price to sell lemonade
     final public double highestPrice = 1;
     final public double mediumPrice = 0.4;
     final public double lowestPrice = 0.1;
@@ -79,7 +79,7 @@ public class SellFactory {
             default:
                 break;
         }
-
+        // Process the sell factor with the purchased ads
         if(this.sellFactor * (1 + (this.adPrice * this.adsQuantity)) < 1){
             this.sellFactor = this.adPrice * this.adsQuantity;
         }
