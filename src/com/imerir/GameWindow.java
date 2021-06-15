@@ -65,7 +65,7 @@ public class GameWindow extends JFrame implements ChangeListener {
 
         labelLemonadeSellPrice = new JLabel();
 
-        sliderLemonadeSellPrice = new JSlider(0, 100, 1);
+        sliderLemonadeSellPrice = new JSlider(1, 100, 1);
 
         sliderLemonadeSellPrice.setPaintTrack(true);
         sliderLemonadeSellPrice.setPaintTicks(true);
@@ -78,7 +78,7 @@ public class GameWindow extends JFrame implements ChangeListener {
 
         labelNbLemonade.setText("Number of Lemonade : " + String.valueOf(sliderNbLemonade.getValue()));
         labelNbAds.setText("Number of Ads : " + String.valueOf(sliderNbAds.getValue()));
-        labelLemonadeSellPrice.setText("Price of Lemonade : " + String.valueOf(sliderLemonadeSellPrice.getValue()));
+        labelLemonadeSellPrice.setText("Price of Lemonade : (price in cents) " + String.valueOf(sliderLemonadeSellPrice.getValue()));
 
         next.addActionListener(this::nextDay);
         next.setSize(224, 59);
@@ -119,7 +119,7 @@ public class GameWindow extends JFrame implements ChangeListener {
     void nextDay(ActionEvent event) {
         game.questionGui(sliderNbLemonade.getValue(), sliderNbAds.getValue(), sliderLemonadeSellPrice.getValue());
         JDialog dialog = new JDialog(parent, "Bilan de la journee", true);
-        dialog.setSize(200, 200);
+        dialog.setSize(250, 200);
         FlowLayout experimentLayout = new FlowLayout();
         dialog.setLayout(experimentLayout);
 

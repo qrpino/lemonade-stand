@@ -55,8 +55,8 @@ public class Game {
     public void questionGui(int nbLemonade, int nbAds, double lemonadeSellPrice) {
         this.currentDay = new Day(this.dayId);
         this.dayId += 1;
-
-        sellFactory = new SellFactory(nbLemonade, nbAds, lemonadeSellPrice, currentDay.getWeather(), this.currentPlayer);
+        // We divide lemonade sell price by 100 because we are using a slider that doesn't accept double/float values
+        sellFactory = new SellFactory(nbLemonade, nbAds, lemonadeSellPrice/100, currentDay.getWeather(), this.currentPlayer);
         sellFactory.factory(currentDay.getLemonadeProductionCost());
     }
 }
