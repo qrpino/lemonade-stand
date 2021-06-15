@@ -22,6 +22,8 @@ public class Main {
 
     /* lancement du jeux */
     void start() {
+        MainWindow window = new MainWindow();
+        window.setVisible(true);
         StartOrNo();
     }
 
