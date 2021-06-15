@@ -11,15 +11,19 @@ public class MainWindow extends JFrame {
 
     JButton b = new JButton(new ImageIcon(getClass().getResource("/start.png")));
     Game game;
+    JPanel panel;
 
     MainWindow(Game game) {
         this.game = game;
+
         // mise en place de la fenêtre
         setTitle("Lemonade Stand");
-        setBounds(10, 10, 600, 400);
+        setBounds(10, 10, 600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(new BorderLayout());
+        panel = new ImagePanel(new ImageIcon(getClass().getResource("/intro.png")).getImage());
+        BorderLayout layout = new BorderLayout();
+        panel.setLayout(layout);
         setContentPane(panel);
         b.addActionListener(this::startGame);
         b.setSize(397, 59);

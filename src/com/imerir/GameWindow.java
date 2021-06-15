@@ -46,7 +46,7 @@ public class GameWindow extends JFrame implements ChangeListener {
 
         labelMoney = new JLabel();
 
-        labelMoney.setText("Money : " + String.valueOf(game.getCurrentPlayer().getMoney()));
+        labelMoney.setText("Money : " + String.valueOf(game.getCurrentPlayer().getMoney()) + " €");
 
         labelNbLemonade = new JLabel();
 
@@ -109,9 +109,8 @@ public class GameWindow extends JFrame implements ChangeListener {
         layout.putConstraint(SpringLayout.NORTH, sliderLemonadeSellPrice, 175, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, sliderLemonadeSellPrice, 20, SpringLayout.EAST, labelLemonadeSellPrice);
 
-        layout.putConstraint(SpringLayout.WEST, next, 10, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, next, 230, SpringLayout.NORTH, panel);
-
+        //layout.putConstraint(SpringLayout.SOUTH, next, 0, SpringLayout.VERTICAL_CENTER, panel);
+        layout.putConstraint(SpringLayout.BASELINE, next, 0, SpringLayout.HORIZONTAL_CENTER, this);
         panel.add(sliderNbLemonade);
         panel.add(labelNbLemonade);
 
