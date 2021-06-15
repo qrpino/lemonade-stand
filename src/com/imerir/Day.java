@@ -1,58 +1,49 @@
 package com.imerir;
 
-import java.util.Random;
-
 public class Day {
+    int id;
+    double lemonadeProductionCost = 0.02;
+    Weather weather;
+    //TODO
 
-    private int minRand = 0;
-    private int maxRand = 13;
-    private Weather weather;
-    private int date;
-
-    /* fonction permetant de crée le premier jour */
-    public Day() {
-        date = 1;
-        randWeather();
-        System.out.println("Day : " + date + ", Weather : " + weather);
-    }
-
-    /* fonction permetant de un jour X */
-    public Day(int date) {
-        this.date = date;
-        randWeather();
-        System.out.println("Day : " + date + ", Weather : " + weather);
-
-    }
-
-    public int getDate() {
-        return date;
-    }
-
-    /* fonction permetant de retournée la météo */
-    public Weather getWeather() {
-        return weather;
-    }
-
-    /* fonction permetant de passer au jour suivant */
-    public void nextDay() {
-        date += 1;
-        new Day(date);
-    }
-
-    /* fonction permetant de generai aleatoirement la météo */
-    public void randWeather () {
-        Random random = new Random();
-        int randNum = random.nextInt(maxRand - minRand) + minRand;
-
-        if (randNum <= 2 && randNum >= 0) {
-            weather = Weather.RAIN;
-        }else if (randNum <= 5 && randNum >= 3){
-            weather = Weather.CLOUDY;
-        } else if (randNum <= 10 && randNum >= 6){
-            weather = Weather.SUNNY;
-        } else if (randNum <= 14 && randNum >= 11) {
-            weather = Weather.HOT;
+    public Day(int id){
+        // day id = current day (1, 2, 3, etc..)
+        this.id = id;
+        // Each 3 days, production cost increase by 2 cents
+        if(this.id % 3 == 0){
+            this.lemonadeProductionCost += 0.02;
+        }
+        // Weather initialization
+        // Generates a random, Math.random generates a float between 0 and 1, and we multiply its value by 100
+        int rand =  (int)(Math.random() * 100);
+        // 10%
+        if(rand > 90 && rand < 100){
+            this.weather = Weather.STORMY;
+        }
+        // 15%
+        else if(rand > 75 && rand < 90){
+            this.weather = Weather.CLOUDY;
+        }
+        // 50%
+        else if(rand > 25 && rand < 75){
+            this.weather = Weather.SUNNY;
+        }
+        // 25%
+        else{
+            this.weather = Weather.VERY_HOT;
         }
     }
 
+    @Override
+    public String toString() {
+        return "DAY " + this.id + ", WEATHER : " + this.weather.toString() + "\n" +
+                "LEMONADE PRODUCTION COST IS " + this.lemonadeProductionCost;
+    }
+
+    public Weather getWeather() {
+        return weather;
+    }
+    public double getLemonadeProductionCost(){
+        return this.lemonadeProductionCost;
+    }
 }
