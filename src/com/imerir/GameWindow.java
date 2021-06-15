@@ -1,5 +1,6 @@
 package com.imerir;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -10,6 +11,7 @@ public class GameWindow extends JFrame implements ChangeListener {
 
     JFrame parent;
     Game game;
+    ImagePanel panel;
 
     JSlider sliderNbLemonade, sliderNbAds, sliderLemonadeSellPrice;
 
@@ -19,16 +21,26 @@ public class GameWindow extends JFrame implements ChangeListener {
 
     JButton next = new JButton(new ImageIcon(getClass().getResource("/next.png")));
 
+    private Image img;
+
     public GameWindow(JFrame parent, Game game) {
         this.parent = parent;
         this.game = game;
 
         setTitle("Lemonade Stand Day: " + game.dayId);
-        setBounds(0,0,600,400);
-
+        setBounds(0,0,600,500);
+        if(game.getCurrentDay().getWeather() == Weather.CLOUDY) {
+            panel = new ImagePanel(new ImageIcon(getClass().getResource("/cloudy.png")).getImage());
+        } else if (game.getCurrentDay().weather == Weather.STORMY) {
+            panel = new ImagePanel(new ImageIcon(getClass().getResource("/thunderstorms.png")).getImage());
+        } else if (game.getCurrentDay().weather == Weather.SUNNY) {
+            panel = new ImagePanel(new ImageIcon(getClass().getResource("/sunny.png")).getImage());
+        } else if (game.getCurrentDay().weather == Weather.VERY_HOT) {
+            panel = new ImagePanel(new ImageIcon(getClass().getResource("/hotanddry.png")).getImage());
+        }
         SpringLayout layout = new SpringLayout();
 
-        JPanel panel = new JPanel();
+        //JPanel panel = new JPanel();
         panel.setLayout(layout);
         setContentPane(panel);
 
@@ -48,7 +60,6 @@ public class GameWindow extends JFrame implements ChangeListener {
         sliderNbLemonade.setMinorTickSpacing(10);
 
         sliderNbLemonade.addChangeListener(this);
-
 
         labelNbAds = new JLabel();
 
@@ -143,8 +154,8 @@ public class GameWindow extends JFrame implements ChangeListener {
         labelActualMoney.setText("ACTUAL MONEY : " + String.valueOf(game.getSellFactory().getActualMoney()));
         dialog.add(labelActualMoney);
 
-
         dialog.setVisible(true);
+
         setTitle("Lemonade Stand Day: " + game.dayId);
         labelMoney.setText("Money : " + String.valueOf(game.getCurrentPlayer().getMoney()));
 

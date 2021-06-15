@@ -40,10 +40,11 @@ public class Day {
                 "LEMONADE PRODUCTION COST IS " + this.lemonadeProductionCost;
     }
 
-    public Weather getWeather() {
-        return weather;
-    }
     public double getLemonadeProductionCost(){
         return this.lemonadeProductionCost;
+    }
+
+    public Weather getWeather() {
+        return this.weather;
     }
 }

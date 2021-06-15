@@ -13,6 +13,10 @@ public class Game {
     private SellFactory sellFactory;
     private Player currentPlayer = new Player(2);
 
+    public void generateDay() {
+        day();
+    }
+
     public void loop(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("START? (YES OR NO)");
@@ -28,12 +32,13 @@ public class Game {
     public SellFactory getSellFactory() {
         return sellFactory;
     }
+
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
 
     public void questions(){
-        this.currentDay = new Day(this.dayId);
+        day();
         this.dayId += 1;
         System.out.println(currentDay.toString());
 
@@ -52,8 +57,16 @@ public class Game {
         sellFactory.factory(currentDay.getLemonadeProductionCost());
     }
 
-    public void questionGui(int nbLemonade, int nbAds, double lemonadeSellPrice) {
+    public void day() {
         this.currentDay = new Day(this.dayId);
+    }
+
+    public Day getCurrentDay() {
+        return currentDay;
+    }
+
+    public void questionGui(int nbLemonade, int nbAds, double lemonadeSellPrice) {
+        day();
         this.dayId += 1;
         // We divide lemonade sell price by 100 because we are using a slider that doesn't accept double/float values
         sellFactory = new SellFactory(nbLemonade, nbAds, lemonadeSellPrice/100, currentDay.getWeather(), this.currentPlayer);
