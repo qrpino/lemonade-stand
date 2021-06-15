@@ -29,6 +29,7 @@ public class GameWindow extends JFrame implements ChangeListener {
 
         setTitle("Lemonade Stand Day: " + game.dayId);
         setBounds(0,0,600,500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if(game.getCurrentDay().getWeather() == Weather.CLOUDY) {
             panel = new ImagePanel(new ImageIcon(getClass().getResource("/cloudy.png")).getImage());
         } else if (game.getCurrentDay().weather == Weather.STORMY) {
